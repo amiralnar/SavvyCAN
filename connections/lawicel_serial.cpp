@@ -449,6 +449,9 @@ void LAWICELSerial::readSerialData()
             {
             case 't': //standard frame
                 //tIIILDD
+                // slcan time is inaccurate anyway and only lasts 1 second or is otherwise something else if
+                // you use non standardised slcan variants. Use system time instead.
+                buildFrame.setTimeStamp(QCanBusFrame::TimeStamp(0, (QDateTime::currentMSecsSinceEpoch() * 1000l) - CANConManager::getInstance()->getTimeBasis()));
                 buildFrame.setFrameId(mBuildLine.mid(1, 3).toInt(nullptr, 16));
                 buildFrame.isReceived = true;
                 buildFrame.setFrameType(QCanBusFrame::FrameType::DataFrame);
