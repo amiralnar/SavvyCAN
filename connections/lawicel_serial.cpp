@@ -218,8 +218,8 @@ void LAWICELSerial::connectDevice()
     serial->setBaudRate(mSerialSpeed);
     serial->setDataBits(serial->Data8);
 
-    serial->setFlowControl(serial->HardwareControl);
-    //serial->setFlowControl(serial->NoFlowControl);
+    //serial->setFlowControl(serial->HardwareControl);
+    serial->setFlowControl(serial->NoFlowControl);
     if (!serial->open(QIODevice::ReadWrite))
     {
         //sendDebug("Error returned during port opening: " + serial->errorString());
