@@ -4,7 +4,7 @@
 
 CANBus::CANBus()
 {
-    speed       = 500000;
+    speed       = 250000;
     listenOnly  = false;
     singleWire  = false;
     active      = false;
